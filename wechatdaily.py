@@ -1,8 +1,11 @@
 import lackey
 from WindowMgr import *
 
+# turn on the monitor
+win32gui.SendMessage(win32con.HWND_BROADCAST,
+                     win32con.WM_SYSCOMMAND, win32con.SC_MONITORPOWER, -1)
 
-#call the wechat window to foreground
+# call the wechat window to foreground
 w = WindowMgr()
 w.find_window("WeChatMainWndForPC","微信")
 w.set_foreground()
@@ -38,7 +41,7 @@ lackey.sleep(3)
 
 lackey.Mouse().wheel(0, 4)
 
-#type the location
+# type the location
 try:
     lackey.click(r"D:\Code\DAD\image\loc.jpg")
     lackey.click(r"D:\Code\DAD\image\TJ.jpg")
@@ -59,7 +62,7 @@ lackey.click(r"D:\Code\DAD\image\addr.jpg")
 lackey.Keyboard().type('hndx')
 lackey.Keyboard().type(lackey.Key().SPACE)
 
-#type the temperature
+# type the temperature
 lackey.sleep(1)
 lackey.click(r"D:\Code\DAD\image\type.jpg")
 lackey.Mouse().move(-30, 0)
