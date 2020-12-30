@@ -1,4 +1,5 @@
 import lackey
+import logging
 from WindowMgr import *
 
 # turn on the monitor
@@ -12,11 +13,20 @@ w.set_foreground()
 
 
 lackey.sleep(1)
+lackey.click(r"D:\Code\DAD\image\chat.jpg")
+lackey.Mouse().move(60, 0)
+lackey.Mouse().wheel(1, 100)
 # enter the subscription list
-lackey.click(r"D:\Code\DAD\image\subscription.jpg")
+while True:
+    try:
+        lackey.click(r"D:\Code\DAD\image\subscription.jpg")
+        break
+    except:
+        lackey.Mouse().wheel(0, 10)
+
 
 lackey.Mouse().move(200, 0)
-lackey.Mouse().wheel(1, 10)
+lackey.Mouse().wheel(1, 100)
 lackey.sleep(1)
 
 # enter the HNU subscription
@@ -74,3 +84,4 @@ lackey.Keyboard().type("{36.5}")
 lackey.Mouse().wheel(0, 7)
 lackey.sleep(1)
 lackey.click(r"D:\Code\DAD\image\attendance.jpg")
+
