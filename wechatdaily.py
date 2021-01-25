@@ -1,21 +1,29 @@
 import lackey
-import logging
 from WindowMgr import *
+
 
 # turn on the monitor
 win32gui.SendMessage(win32con.HWND_BROADCAST,
                      win32con.WM_SYSCOMMAND, win32con.SC_MONITORPOWER, -1)
+
+lackey.sleep(1)
+
+lackey.Keyboard().keyDown(lackey.Key.PRINTSCREEN)
+lackey.Keyboard().keyUp(lackey.Key.PRINTSCREEN)
 
 # call the wechat window to foreground
 w = WindowMgr()
 w.find_window("WeChatMainWndForPC","微信")
 w.set_foreground()
 
+lackey.Keyboard().keyDown(lackey.Key.PRINTSCREEN)
+lackey.Keyboard().keyUp(lackey.Key.PRINTSCREEN)
 
 lackey.sleep(1)
 lackey.click(r"D:\Code\DAD\image\chat.jpg")
 lackey.Mouse().move(60, 0)
-lackey.Mouse().wheel(1, 100)
+lackey.sleep(1)
+lackey.Mouse().wheel(1, 200)
 # enter the subscription list
 while True:
     try:
@@ -26,6 +34,7 @@ while True:
 
 
 lackey.Mouse().move(200, 0)
+lackey.sleep(1)
 lackey.Mouse().wheel(1, 100)
 lackey.sleep(1)
 
@@ -39,11 +48,13 @@ except:
 lackey.click(r"D:\Code\DAD\image\func.jpg")
 lackey.click(r"D:\Code\DAD\image\prevent.jpg")
 
-lackey.sleep(2)
+lackey.sleep(5)
+
 try:
     lackey.click(r"D:\Code\DAD\image\agree.jpg")
 except:
-    pass
+    lackey.Keyboard().keyDown(lackey.Key.PRINTSCREEN)
+    lackey.Keyboard().keyUp(lackey.Key.PRINTSCREEN)
 
 
 # enter the daily attendance web page
